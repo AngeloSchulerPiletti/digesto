@@ -1,6 +1,6 @@
 ﻿namespace Digesto.Domain.Entities
 {
-    public class IndependentDocument
+    public class IndependentDocument : BaseEntity
     {
         public string Url { get; set; }
         public uint? InsuranceTypeId { get; set; }

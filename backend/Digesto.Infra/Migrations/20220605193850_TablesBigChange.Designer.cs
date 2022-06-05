@@ -3,6 +3,7 @@ using System;
 using Digesto.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Digesto.Infra.Migrations
 {
     [DbContext(typeof(DigestoContext))]
-    partial class DigestoContextModelSnapshot : ModelSnapshot
+    [Migration("20220605193850_TablesBigChange")]
+    partial class TablesBigChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
