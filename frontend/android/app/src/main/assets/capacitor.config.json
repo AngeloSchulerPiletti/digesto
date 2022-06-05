@@ -1,0 +1,6 @@
+{
+	"appId": "email.digesto.digesto",
+	"appName": "Digesto",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
