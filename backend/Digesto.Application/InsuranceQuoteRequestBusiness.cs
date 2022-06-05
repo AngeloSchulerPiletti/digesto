@@ -23,7 +23,7 @@ public class InsuranceQuoteRequestBusiness : IInsuranceQuoteRequestBusiness
             new MessageBagSingleEntityVO<InsuranceQuoteRequest>("Pedido de orçamento encontrado", "Sucesso", false, insuranceQuoteRequest);
     }
 
-    public MessageBagListEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequestPerBroker(PaginationDTO pagination, Broker broker)
+    public MessageBagListEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequestsPerBroker(PaginationDTO pagination, Broker broker)
     {
         int total = _insuranceQuoteRequestRepository.GetTotalInsuranceQuoteRequestsByBroker(broker.Id);
         pagination.FillBasedInTotalItems((uint)total);

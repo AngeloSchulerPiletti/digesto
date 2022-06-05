@@ -36,7 +36,7 @@ public class InsuranceQuoteRequestController : ControllerBase
         if (messageBagBroker.IsError) return BadRequest(messageBagBroker);
 
         MessageBagListEntityVO<InsuranceQuoteRequest> messageBagInsuranceQuoteRequests =
-            _insuranceQuoteRequestBusiness.GetInsuranceQuoteRequestPerBroker(pagination, messageBagBroker.Entity);
+            _insuranceQuoteRequestBusiness.GetInsuranceQuoteRequestsPerBroker(pagination, messageBagBroker.Entity);
         return messageBagInsuranceQuoteRequests.IsError ? 
             BadRequest(messageBagInsuranceQuoteRequests) : 
             Ok(messageBagInsuranceQuoteRequests);

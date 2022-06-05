@@ -6,6 +6,6 @@ namespace Digesto.Application.Interfaces;
 
 public interface IInsuranceQuoteRequestBusiness
 {
-    public MessageBagSingleEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequest(Broker broker, uint id);
-    public MessageBagListEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequestPerBroker(PaginationDTO pagination, Broker broker);
+    public MessageBagSingleEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequest(Broker broker, uint insuranceQuoteRequestId);
+    public MessageBagListEntityVO<InsuranceQuoteRequest> GetInsuranceQuoteRequestsPerBroker(PaginationDTO pagination, Broker broker);
 }
