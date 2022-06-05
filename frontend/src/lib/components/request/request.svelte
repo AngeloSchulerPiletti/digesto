@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Card } from '$lib/components/card';
   import {
     RequestDocuments,
     RequestEmail,
@@ -15,13 +14,9 @@
 <RequestHeader {message} />
 <RequestDocuments {documents} />
 <RequestEmail content={message.content} />
-
-<RequestTitle>Anexos</RequestTitle>
-<div class="placeholder-sm">
-  <Card />
-</div>
+<div class="spacing" />
 
 <style lang="sass">
-  .placeholder-sm
-    height: 8rem
+  .spacing
+    height: 3rem
 </style>
