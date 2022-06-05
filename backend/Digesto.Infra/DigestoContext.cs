@@ -1,11 +1,6 @@
 ﻿using Digesto.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Digesto.Infra
 {
@@ -18,20 +13,54 @@ namespace Digesto.Infra
             Configuration = configuration;
         }
 
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Document> Documents { get; set; }
-        public virtual DbSet<DocumentCategory> DocumentsCategories { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Broker> Brokers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Email> Emails { get; set; }
+        public virtual DbSet<EmailDocument> Documents { get; set; }
+        public virtual DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
+        public virtual DbSet<InsuranceQuoteRequest> InsuranceQuoteRequests { get; set; }
+        public virtual DbSet<InsuranceType> InsuranceTypes { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if(builder.IsConfigured)
-            {
-                return;
-            }
+            modelBuilder.Entity<Broker>()
+                .HasMany(x => x.InsuranceQuoteRequests)
+                .WithOne(x => x.Broker)
+                .HasForeignKey(x => x.BrokerId);
 
-            var connectionString = Configuration.GetConnectionString("WebApiDatabase");
-            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            modelBuilder.Entity<Customer>()
+                .HasMany(x => x.InsuranceQuoteRequests)
+                .WithOne(x => x.Customer)
+                .HasForeignKey(x => x.CustomerId);
+
+            modelBuilder.Entity<EmailDocument>()
+                .HasOne(x => x.InsuranceType)
+                .WithMany(x => x.EmailDocuments)
+                .HasForeignKey(x => x.InsuranceTypeId);
+
+            modelBuilder.Entity<EmailDocument>()
+                .HasOne(x => x.Email)
+                .WithMany(x => x.EmailDocuments)
+                .HasForeignKey(x => x.EmailId);
+
+            modelBuilder.Entity<Email>()
+                .HasOne(x => x.InsuranceQuoteRequest)
+                .WithMany(x => x.Emails)
+                .HasForeignKey(x => x.InsuranceQuoteRequestId);
+
+            modelBuilder.Entity<IndependentDocument>()
+                .HasOne(x => x.InsuranceType)
+                .WithMany(x => x.IndependentDocuments)
+                .HasForeignKey(x => x.InsuranceTypeId);
+
+            modelBuilder.Entity<IndependentDocument>()
+                .HasOne(x => x.InsuranceQuoteRequest)
+                .WithMany(x => x.IndependentDocuments)
+                .HasForeignKey(x => x.InsuranceQuoteRequestId);
+
+            modelBuilder.Entity<InsuranceType>()
+                .HasMany(x => x.AvailableInsuranceCompanies)
+                .WithMany(x => x.AvailableInsuranceTypes);
         }
     }
 }
