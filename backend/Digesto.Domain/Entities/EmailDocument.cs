@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Digesto.Domain.Entities
 {
-    public class Document : BaseEntity
+    public class EmailDocument : BaseEntity
     {
         public string Url { get; set; }
-        public int ClientId { get; set; }
-        public int? DocumentCategoryId { get; set; }
-        public virtual DocumentCategory DocumentCategory { get; set; }
-        public virtual Client Client { get; set; }
+        public uint? InsuranceTypeId { get; set; }
+        public virtual InsuranceType InsuranceType { get; set; }
+        public uint EmailId { get; set; }
+        public virtual Email Email { get; set; }
     }
 }
