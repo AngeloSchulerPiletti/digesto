@@ -1,18 +1,19 @@
 <script lang="ts">
-  import { RequestEmail, RequestTitle, RequestHeader } from '.';
-  import type { EmailMessage } from '$lib/modules/messages';
   import { Card } from '$lib/components/card';
+  import {
+    RequestDocuments,
+    RequestEmail,
+    RequestTitle,
+    RequestHeader,
+  } from '.';
+  import type { Document } from '.';
+  import type { EmailMessage } from '$lib/modules/messages';
 
-  export let message: EmailMessage;
+  export let message: EmailMessage, documents: Document[];
 </script>
 
 <RequestHeader {message} />
-
-<RequestTitle>Análise de documentos</RequestTitle>
-<div class="placeholder-xl">
-  <Card />
-</div>
-
+<RequestDocuments {documents} />
 <RequestEmail content={message.content} />
 
 <RequestTitle>Anexos</RequestTitle>
@@ -23,7 +24,4 @@
 <style lang="sass">
   .placeholder-sm
     height: 8rem
-    
-  .placeholder-xl
-    height: 24rem
 </style>

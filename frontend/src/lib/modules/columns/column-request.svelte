@@ -19,6 +19,7 @@
     TrashIcon,
     UserCheckmarkIcon,
   } from '$lib/components/icons';
+  import { documents } from '$lib/fixtures/documents';
 </script>
 
 <Column fill>
@@ -38,7 +39,7 @@
   <ColumnContent>
     {#if $READING_EMAIL != null}
       <ColumnSection>
-        <Request message={$READING_EMAIL} />
+        <Request message={$READING_EMAIL} {documents} />
       </ColumnSection>
     {:else}
       <ColumnIllustration

@@ -2,10 +2,10 @@
   import {
     ColumnMenu,
     ColumnMessages,
-    ColumnReader,
+    ColumnRequest,
   } from '$lib/modules/columns';
 </script>
 
 <ColumnMenu />
 <ColumnMessages />
-<ColumnReader />
+<ColumnRequest />

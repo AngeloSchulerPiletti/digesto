@@ -6,7 +6,7 @@
 </script>
 
 <RequestTitle>Mensagem</RequestTitle>
-<div class="email-reader-content">
+<div class="request-email">
   <Card>
     {@html content}
   </Card>
