@@ -14,6 +14,7 @@ export { default as HomeIcon } from './home-icon.svelte';
 export { default as MailForwardIcon } from './mail-forward-icon.svelte';
 export { default as MenuHorizontalIcon } from './menu-horizontal-icon.svelte';
 export { default as NotificationIcon } from './notification-icon.svelte';
+export { default as PaperClipIcon } from './paper-clip-icon.svelte';
 export { default as PenIcon } from './pen-icon.svelte';
 export { default as ReplyAllIcon } from './reply-all-icon.svelte';
 export { default as ReplyIcon } from './reply-icon.svelte';
