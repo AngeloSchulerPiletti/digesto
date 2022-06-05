@@ -1,21 +1,36 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { Card } from '$lib/components/card';
   import { RequestDocumentFields, RequestTitle } from '.';
   import type { Document } from '.';
 
   export let documents: Document[] = [];
+
+  // FIXME: iframe doesn't always load if the url is set right away, so i'm doing this for now
+  let showDocument = false;
+  onMount(() => setTimeout(() => (showDocument = true), 500));
 </script>
 
 <RequestTitle>Análise de documentos</RequestTitle>
 <ul class="request-documents">
-  <li>
-    <div class="column document">
-      <Card>
-        <iframe src="/document-example.pdf" title="" />
-      </Card>
-    </div>
-    <div class="column data">
-      {#each documents as document}
+  {#each documents as document}
+    <li>
+      <div class="column document">
+        <Card>
+          {#if showDocument}
+            <iframe
+              class="iframe"
+              src="https://docs.google.com/viewer?url={encodeURIComponent(
+                document.url,
+              )}&embedded=true"
+              title=""
+            />
+          {:else}
+            <div class="iframe" />
+          {/if}
+        </Card>
+      </div>
+      <div class="column data">
         <Card>
           <h1 class="file-name">
             {document.filename}
@@ -27,9 +42,9 @@
           </h1>
           <RequestDocumentFields fields={document.fields} />
         </Card>
-      {/each}
-    </div>
-  </li>
+      </div>
+    </li>
+  {/each}
 </ul>
 
 <style lang="sass">
@@ -47,7 +62,7 @@
           padding: 0
           overflow: hidden
 
-        iframe
+        .iframe
           width: 20rem
           height: 100%
           min-height: 25rem
@@ -81,7 +96,7 @@
     .request-documents li
       flex-direction: column
 
-      .column.document iframe
+      .column.document .iframe
         width: 100%
         height: 16rem
         min-height: unset
