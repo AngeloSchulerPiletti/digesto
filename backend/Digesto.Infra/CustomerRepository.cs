@@ -3,7 +3,7 @@ using Digesto.Infra.Interfaces;
 
 namespace Digesto.Infra;
 
-internal class CustomerRepository : ICustomerRepository
+public class CustomerRepository : ICustomerRepository
 {
     private readonly DigestoContext _context;
 

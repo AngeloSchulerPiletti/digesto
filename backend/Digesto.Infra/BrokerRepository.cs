@@ -3,7 +3,7 @@ using Digesto.Infra.Interfaces;
 
 namespace Digesto.Infra;
 
-internal class BrokerRepository : IBrokerRepository
+public class BrokerRepository : IBrokerRepository
 {
     private readonly DigestoContext _context;
 
