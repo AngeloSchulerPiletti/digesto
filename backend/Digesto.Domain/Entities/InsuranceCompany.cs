@@ -1,6 +1,6 @@
 ﻿namespace Digesto.Domain.Entities;
 
-public class InsuranceCompany
+public class InsuranceCompany : BaseEntity
 {
     public string Name { get; set; }
     public string ContactEmail { get; set; }

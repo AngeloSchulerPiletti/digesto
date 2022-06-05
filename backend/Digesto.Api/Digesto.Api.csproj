@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>b6d489a8-3cad-4ef6-a6c9-c3a821366a22</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Digesto.Application.Services\Digesto.Application.Services.csproj" />
     <ProjectReference Include="..\Digesto.Application\Digesto.Application.csproj" />
   </ItemGroup>
 

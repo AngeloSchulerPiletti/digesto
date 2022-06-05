@@ -8,7 +8,7 @@ namespace Digesto.Infra
     {
         protected readonly IConfiguration Configuration;
 
-        public DigestoContext(IConfiguration configuration)
+        public DigestoContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             Configuration = configuration;
         }

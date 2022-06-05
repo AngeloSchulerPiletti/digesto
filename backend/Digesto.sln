@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digesto.Infra", "Digesto.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digesto.Admin.Api", "Digesto.Admin.Api\Digesto.Admin.Api.csproj", "{884DCBA4-5D88-4C9B-824B-88DBBEDDF5B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digesto.Application.Services", "Digesto.Application.Services\Digesto.Application.Services.csproj", "{29A46595-23A3-4489-BF2B-FBE8ED8F06B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{884DCBA4-5D88-4C9B-824B-88DBBEDDF5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{884DCBA4-5D88-4C9B-824B-88DBBEDDF5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{884DCBA4-5D88-4C9B-824B-88DBBEDDF5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A46595-23A3-4489-BF2B-FBE8ED8F06B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A46595-23A3-4489-BF2B-FBE8ED8F06B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A46595-23A3-4489-BF2B-FBE8ED8F06B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A46595-23A3-4489-BF2B-FBE8ED8F06B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
