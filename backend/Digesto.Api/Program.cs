@@ -1,14 +1,17 @@
-
 using Digesto.Infra;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
-builder.Services.AddDbContext<DigestoContext>(options => 
-                    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddControllers()
+                .AddJsonOptions(x =>
+                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddControllers();
+string connectionString = builder.Configuration.GetConnectionString("WebApiDatabase");
+builder.Services.AddDbContext<DigestoContext>(options =>
+                    options.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
