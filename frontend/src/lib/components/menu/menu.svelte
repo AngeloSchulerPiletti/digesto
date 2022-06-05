@@ -1,11 +1,22 @@
 <script lang="ts">
+  import { ChevronLeftIcon, HamburgerIcon } from '$lib/components/icons';
   import type { MenuItems } from '.';
 
-  export let items: MenuItems = [];
+  export let items: MenuItems = [],
+    showMobileMenu = false,
+    showBackButton = false,
+    goBack: () => void;
 </script>
 
-<div class="menu">
+<div class="menu" class:show-mobile-menu={showMobileMenu}>
+  <div class="menu-button" class:hide={!showBackButton} on:click={goBack}>
+    <ChevronLeftIcon />
+  </div>
+  <div class="menu-button" on:click={() => (showMobileMenu = true)}>
+    <HamburgerIcon />
+  </div>
   <img src="/logo.png" alt="" class="menu-logo" />
+  <img src="/logo-alt.png" alt="" class="menu-logo-mobile" />
   <div class="menu-links">
     {#each items as item}
       {#if typeof item === 'string'}
@@ -18,6 +29,7 @@
       {/if}
     {/each}
   </div>
+  <div class="menu-background" on:click={() => (showMobileMenu = false)} />
 </div>
 
 <style lang="sass">
@@ -32,6 +44,9 @@
       margin: 1.5rem 0
       pointer-events: none
       user-select: none
+
+    &-logo-mobile
+      display: none
 
     &-links
       display: flex
@@ -66,4 +81,69 @@
         :global(svg)
           width: 1.25rem
           height: 1.25rem
+
+    &-background
+      position: fixed
+      top: 0
+      right: 0
+      display: none
+      width: calc(100% - 16rem)
+      height: 100%
+      background-color: rgba(#000, .5)
+      transition: all .4s ease
+
+    &-button
+      display: none
+      justify-content: center
+      align-items: center
+      width: 2rem
+      height: 4rem
+      margin-left: .5rem
+      transition: all .3s ease
+
+      &.hide
+        margin-left: -2rem
+
+      :global(svg)
+        width: 2rem
+        height: 2rem
+
+  @media screen and (max-width: 768px)
+    .menu
+      flex-direction: row
+      z-index: 1
+
+      &-logo
+        display: none
+
+      &-logo-mobile
+        display: block
+        align-self: center
+        height: 2.5rem
+        margin: 0 1rem 0 auto
+
+      &-button
+        display: flex
+
+      &-links
+        position: fixed
+        height: 100%
+        padding: 1rem 0
+        background-color: #1e293b
+        transition: all .4s ease
+
+      &-link
+        width: 16rem
+
+      &-background
+        display: block
+
+      &:not(.show-mobile-menu)
+        .menu-links
+          transform: translateX(-16rem)
+
+        .menu-background
+          width: 100%
+          opacity: 0
+          pointer-events: none
 </style>

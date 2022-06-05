@@ -20,10 +20,12 @@
     UserCheckmarkIcon,
   } from '$lib/components/icons';
   import { documents } from '$lib/fixtures/documents';
+
+  export let active = false;
 </script>
 
-<Column fill>
-  {#if $READING_EMAIL != null}
+<Column fill {active}>
+  {#if active}
     <Topbar>
       <TopbarActions center>
         <Button><GraphIcon /> Enviar para cotação</Button>
@@ -37,7 +39,7 @@
     </Topbar>
   {/if}
   <ColumnContent>
-    {#if $READING_EMAIL != null}
+    {#if active}
       <ColumnSection>
         <Request message={$READING_EMAIL} {documents} />
       </ColumnSection>

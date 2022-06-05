@@ -2,10 +2,11 @@
   export let dark = false,
     small = false,
     medium = false,
-    fill = false;
+    fill = false,
+    active = false;
 </script>
 
-<div class="column" class:dark class:small class:medium class:fill>
+<div class="column" class:dark class:small class:medium class:fill class:active>
   <slot />
 </div>
 
@@ -31,4 +32,23 @@
 
     &.medium
       width: 24rem
+
+  @media screen and (max-width: 1600px)
+    .column
+      &.small
+        width: 14rem
+
+      &.medium
+        width: 20rem
+
+  @media screen and (max-width: 768px)
+    .column
+      width: 100% !important
+      border-right: none !important
+
+      &.small
+        height: 4rem
+
+      &:not(.active)
+        display: none
 </style>

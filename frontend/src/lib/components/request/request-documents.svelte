@@ -43,7 +43,9 @@
 
       .column.document
         :global(.card)
+          display: flex
           padding: 0
+          overflow: hidden
 
         iframe
           width: 20rem
@@ -74,4 +76,13 @@
               text-transform: uppercase
               border: 1px solid #206bc4
               border-radius: .25rem
+
+  @media screen and (max-width: 768px)
+    .request-documents li
+      flex-direction: column
+
+      .column.document iframe
+        width: 100%
+        height: 16rem
+        min-height: unset
 </style>
