@@ -76,4 +76,8 @@
 
   :global(.topbar-actions .button.primary:first-child)
     margin-left: .25rem
+
+  @media screen and (max-width: 768px)
+    .button:not(.icon)
+      width: max-content
 </style>

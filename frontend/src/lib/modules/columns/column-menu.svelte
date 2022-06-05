@@ -1,14 +1,13 @@
 <script lang="ts">
+  import { READING_EMAIL } from '$lib/modules/messages';
   import { page } from '$app/stores';
   import { Column } from '$lib/components/column';
   import { Menu } from '$lib/components/menu';
   import {
-    AlarmIcon,
     AttachmentIcon,
     BoxIcon,
     CheckmarkOutlineIcon,
     ClockIcon,
-    FlagIcon,
     FolderIcon,
     GraphIcon,
     NotificationIcon,
@@ -95,8 +94,17 @@
       ? item
       : { ...item, active: $page.url.pathname == item.href },
   );
+
+  let showMobileMenu = false;
+  $: isReadingEmail = $READING_EMAIL != null;
+  const stopReadingEmail = () => ($READING_EMAIL = null);
 </script>
 
-<Column dark small>
-  <Menu {items} />
+<Column dark small active>
+  <Menu
+    {items}
+    bind:showMobileMenu
+    showBackButton={isReadingEmail}
+    goBack={stopReadingEmail}
+  />
 </Column>

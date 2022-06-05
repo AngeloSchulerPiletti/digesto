@@ -57,7 +57,7 @@ export const extractedData: ExtractedData[] = [
 export const documents: Document[] = [
   {
     filename: 'document-example.pdf',
-    url: '/document-example.pdf',
+    url: 'https://scripts.doceazedo.com/document-example.pdf',
     tags: ['Formulário'],
     fields: extractedData,
   },

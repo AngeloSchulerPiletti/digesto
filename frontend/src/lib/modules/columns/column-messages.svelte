@@ -10,9 +10,11 @@
     SortDescendingIcon,
   } from '$lib/components/icons';
   import { messages } from '$lib/fixtures/messages';
+
+  export let active = false;
 </script>
 
-<Column medium>
+<Column medium {active}>
   <Topbar>
     <TopbarActions>
       <Button primary><AddIcon /> Nova</Button>

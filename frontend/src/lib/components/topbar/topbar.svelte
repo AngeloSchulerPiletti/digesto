@@ -11,4 +11,8 @@
     padding: .25rem
     background-color: #fff
     border-bottom: 1px solid #e6e7e9
+
+  @media screen and (max-width: 768px)
+    .topbar
+      overflow-x: auto
 </style>
