@@ -27,7 +27,7 @@ public class EmailController : ControllerBase
     [HttpGet]
     [Route("broker/{id}")]
     [Pagination]
-    IActionResult GetEmailsByBroker(uint id) //Futuramente usando o token para obter o id do broker
+    public IActionResult GetEmailsByBroker(uint id) //Futuramente usando o token para obter o id do broker
     {
         PaginationDTO pagination = (PaginationDTO)HttpContext.Items["Pagination"];
 
@@ -44,7 +44,7 @@ public class EmailController : ControllerBase
     [HttpGet]
     [Route("insurance-quote-request/{brokerId}/{id}")]
     [Pagination]
-    IActionResult GetEmailsByInsuranceQuoteRequest(uint id, uint brokerId) //Futuramente usando o token para obter o id do broker
+    public IActionResult GetEmailsByInsuranceQuoteRequest(uint id, uint brokerId) //Futuramente usando o token para obter o id do broker
     {
         PaginationDTO pagination = (PaginationDTO)HttpContext.Items["Pagination"];
 
@@ -60,7 +60,7 @@ public class EmailController : ControllerBase
 
     [HttpGet]
     [Route("{brokerId}/{emailId}")]
-    IActionResult GetEmail(uint brokerId, uint emailId) //Futuramente usando o token para obter o id do broker
+    public IActionResult GetEmail(uint brokerId, uint emailId) //Futuramente usando o token para obter o id do broker
     {
         MessageBagSingleEntityVO<Broker> messageBagBroker = _brokerBusiness.GetBroker(brokerId);
         if (messageBagBroker.IsError) return BadRequest(messageBagBroker);

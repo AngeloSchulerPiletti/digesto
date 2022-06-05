@@ -28,7 +28,7 @@ public class InsuranceQuoteRequestController : ControllerBase
     [HttpGet]
     [Route("broker/{id}")]
     [Pagination]
-    IActionResult GetInsuranceQuoteRequestsByBroker(uint id) //Futuramente usando o token para obter o id do broker
+    public IActionResult GetInsuranceQuoteRequestsByBroker(uint id) //Futuramente usando o token para obter o id do broker
     {
         PaginationDTO pagination = (PaginationDTO)HttpContext.Items["Pagination"];
 
@@ -44,7 +44,7 @@ public class InsuranceQuoteRequestController : ControllerBase
 
     [HttpGet]
     [Route("{brokerId}/{insuranceQuoteRequestId}")]
-    IActionResult GetInsuranceQuoteRequest(uint brokerId, uint insuranceQuoteRequestId) //Futuramente usando o token para obter o id do broker
+    public IActionResult GetInsuranceQuoteRequest(uint brokerId, uint insuranceQuoteRequestId) //Futuramente usando o token para obter o id do broker
     {
         MessageBagSingleEntityVO<Broker> messageBagBroker = _brokerBusiness.GetBroker(brokerId);
         if (messageBagBroker.IsError) return BadRequest(messageBagBroker);
