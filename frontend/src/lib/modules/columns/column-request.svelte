@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { READING_EMAIL } from '$lib/modules/messages';
+  import { READING_EMAIL, MESSAGES } from '$lib/modules/messages';
+  import { NOTIFICATIONS } from '$lib/modules/notifications';
   import {
     Column,
     ColumnContent,
@@ -22,13 +23,21 @@
   import { documents } from '$lib/fixtures/documents';
 
   export let active = false;
+
+  const demoSend = () => {
+    $MESSAGES.shift();
+    $MESSAGES = $MESSAGES;
+    $READING_EMAIL = null;
+    $NOTIFICATIONS = ['Enviado com sucesso.'];
+    setTimeout(() => ($NOTIFICATIONS = []), 3500);
+  };
 </script>
 
 <Column fill {active}>
   {#if active}
     <Topbar>
       <TopbarActions center>
-        <Button><GraphIcon /> Enviar para cotação</Button>
+        <Button on:click={demoSend}><GraphIcon /> Enviar para cotação</Button>
         <Button><UserCheckmarkIcon /> Redesignar</Button>
         <Button><TagIcon /> Marcar</Button>
         <Button textPrimary><NotificationIcon /> Soneca</Button>

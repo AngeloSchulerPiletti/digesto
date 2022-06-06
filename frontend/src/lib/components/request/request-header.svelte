@@ -2,19 +2,19 @@
   import { getDateTime, getGravatarURL } from '$lib/utils';
   import type { EmailMessage } from '$lib/modules/messages';
 
-  export let message: EmailMessage;
+  export let message: EmailMessage | null;
 </script>
 
 <header class="request-header">
   <div class="request-data">
-    <h1 class="request-title">Solicitação #{message.id}</h1>
+    <h1 class="request-title">Solicitação #{message?.id}</h1>
 
     <div class="request-author">
       <figure class="request-author-avatar">
-        <img src={getGravatarURL(message.author.email)} alt="" />
+        <img src={getGravatarURL(message?.author?.email || '')} alt="" />
       </figure>
       <div class="request-author-info">
-        <p><b>Cliente:</b> {message.author.name}</p>
+        <p><b>Cliente:</b> {message?.author?.name}</p>
         <p><b>Responsável:</b> Você</p>
       </div>
     </div>
@@ -22,8 +22,9 @@
   <div class="request-data has-text-right">
     <div class="request-status">Em aberto</div>
     <p class="request-dates">
-      <span>Recebido em {getDateTime(message.created_at)}</span>
-      <span>Atualizado em {getDateTime(message.updated_at)}</span>
+      <span>Recebido em {getDateTime(message?.created_at || new Date())}</span>
+      <span>Atualizado em {getDateTime(message?.updated_at || new Date())}</span
+      >
     </p>
   </div>
 </header>

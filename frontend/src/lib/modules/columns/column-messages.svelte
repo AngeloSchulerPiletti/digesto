@@ -2,14 +2,13 @@
   import { Column, ColumnContent } from '$lib/components/column';
   import { TopbarActions, Topbar } from '$lib/components/topbar';
   import { Button } from '$lib/components/button';
-  import { Messages } from '$lib/modules/messages';
+  import { MESSAGES, Messages } from '$lib/modules/messages';
   import {
     AddIcon,
     FilterIcon,
     RefreshIcon,
     SortDescendingIcon,
   } from '$lib/components/icons';
-  import { messages } from '$lib/fixtures/messages';
 
   export let active = false;
 </script>
@@ -26,6 +25,6 @@
     </TopbarActions>
   </Topbar>
   <ColumnContent hasBackground>
-    <Messages {messages} />
+    <Messages messages={$MESSAGES} />
   </ColumnContent>
 </Column>

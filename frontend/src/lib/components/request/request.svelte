@@ -3,12 +3,12 @@
   import type { Document } from '.';
   import type { EmailMessage } from '$lib/modules/messages';
 
-  export let message: EmailMessage, documents: Document[];
+  export let message: EmailMessage | null, documents: Document[];
 </script>
 
 <RequestHeader {message} />
 <RequestDocuments {documents} />
-<RequestEmail content={message.content} />
+<RequestEmail content={message?.content || ''} />
 <div class="spacing" />
 
 <style lang="sass">
