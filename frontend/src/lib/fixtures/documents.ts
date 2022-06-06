@@ -1,63 +1,55 @@
 import type { Document, ExtractedData } from '$lib/components/request';
 
-export const extractedData: ExtractedData[] = [
-  {
-    name: '',
-    label: 'Nome do segurado(a)',
-    value: 'Rosângela Gonçalves Drumond',
-  },
-  {
-    name: '',
-    label: 'CPF',
-    value: '177.858.655-40',
-  },
-  {
-    name: '',
-    label: 'RG',
-    value: '19.662.456-3',
-  },
-  {
-    name: '',
-    label: 'Data de nascimento',
-    value: '08/03/1984',
-  },
-  {
-    name: '',
-    label: 'Data do acidente',
-    value: '05/06/2022',
-  },
-  {
-    name: '',
-    label: 'Local do acidente',
-    value: 'Autódromo de Interlagos, São Paulo - SP',
-  },
-  {
-    name: '',
-    label: 'Hora do acidente',
-    value: '16:20',
-  },
-  {
-    name: '',
-    label: 'Acidente de trabalho',
-    value: 'Não',
-  },
-  {
-    name: '',
-    label: 'Registro policial',
-    value: 'Não',
-  },
-  {
-    name: '',
-    label: 'Descrição da ocorrência',
-    value:
-      'O conflito da psique inconsciente, corrobora a crescente influência da mídia prepara-nos para enfrentar situações atípicas decorrentes dos valores morais decorrentes de uma tradição normativa.',
-  },
-];
+const json = {
+  MOTOR: 'M316058',
+  PLACA: 'IWS2351',
+  'ANO FABRICA\u00c7\u00c3O': '2015',
+  'EXERC\u00cdCIO': '2022',
+  'C\u00d3DIGO RENAVAM': '01058557499',
+  'ANO MODELO': '2016',
+  'POT\u00caNCIA/CILINDRADA': '154CV/1987',
+  'PESO BRUTO TOTAL': '1.7',
+  CMT: '1.7',
+  'CPF/CNPJ': '521.787.490-20',
+  'LOTA\u00c7\u00c3O': '05P',
+  CARROCERIA: 'N\u00e3o APLICAVEL',
+  'C\u00d3DIGO DE SEGURAN\u00c7A DO CLA': '46620376010',
+  EIXOS: '2',
+  CAT: '***',
+  CAPACIDADE: '* *',
+  LOCAL: 'ESTEIO RS',
+  PARCELADO: '',
+  DATA: '11/01/2022',
+  'COTA \u00daNICA': '',
+  'MARCA/MODELO/VERS\u00c3O': 'TOYOTA/COROLLA XEI20FLEX',
+  'PLACA ANTERIOR/UF': '',
+  'COR PREDOMINANTE': 'CINZA',
+  CHASSI: '9BRBDWHE4G0274272',
+  CATEGORIA: 'PARTICULAR',
+  'COMBUST\u00cdVEL': 'ALCOOL/GASOLINA',
+  'ESP\u00c9CIE TIPO': 'PASSAGEIRO AUTOMOVEL',
+  'VALOR TOTAL (R$)': '',
+  'REPASSE OBRIGAT\u00d3RIO AO FNS (R$)': '',
+  NOME: 'JONE MARIO PILETTI',
+  'N\u00daMERO DO CRV': '***',
+  'CUSTO EFETIVO DO SEGURO (R$)': '*',
+  'REPASSE OBRIGAT\u00d3RIO AO SENATRAN (R$)': '*',
+  'CAT. TARIF': '*',
+  'DATA DE QUITA\u00c7\u00c3O': '',
+  'CUSTO DO BILHETE (R$)': '*',
+  'VALOR DO IOF (R$)': '*',
+  'DADOS DO SEGURO DPVAT': '',
+  'OBSERVA\u00c7\u00d5ES DO VE\u00cdCULO': '',
+};
+
+export const extractedData: ExtractedData[] = Object.entries(json).map(
+  ([label, value]) => ({ name: '', label, value }),
+);
 
 export const documents: Document[] = [
   {
-    filename: 'document-example.pdf',
-    url: 'https://scripts.doceazedo.com/document-example.pdf',
+    filename: 'unknown.pdf',
+    url: 'https://scripts.doceazedo.com/CRLV_Digital_1517516133859BR0127.pdf',
     tags: ['Formulário'],
     fields: extractedData,
   },

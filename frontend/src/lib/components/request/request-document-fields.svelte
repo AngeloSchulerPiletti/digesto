@@ -8,7 +8,7 @@
   <tbody>
     {#each fields as field}
       <tr>
-        <td>{field.label}:</td>
+        <td><span class="label">{field.label}:</span></td>
         <td>
           <input type="text" name={field.name} value={field.value} />
         </td>
@@ -29,6 +29,13 @@
         white-space: nowrap
         padding-right: 1rem
         text-align: right
+
+      .label
+        display: block
+        max-width: 12rem
+        text-overflow: ellipsis
+        white-space: nowrap
+        overflow: hidden
 
     input
       width: 100%

@@ -15,3 +15,17 @@ export const messages: EmailMessage[] = [
     read: true,
   },
 ];
+
+export const messageCRLV: EmailMessage = {
+  id: '3BC63',
+  author: {
+    email: 'josebb68@hotmail.com',
+    name: 'José Benedito Barbosa',
+  },
+  subject: '',
+  content:
+    'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis provident praesentium impedit, doloribus officiis velit facilis et expedita possimus, ex fuga id pariatur eos. Adipisci ex iusto molestiae sint deleniti.',
+  created_at: new Date(),
+  updated_at: new Date(),
+  read: true,
+};
